@@ -14,7 +14,14 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+$config['base_url']			= 'http://localhost/project300/';
+
+/* ------ Custom Configuration Goes Below ------ */
+$config['siteName']			= 'Site Name';
+$config['siteTag']			= 'Site Tag Name';
+$config['siteAdminName']	= 'Site Admin';
+$config['siteAdminEmail']	= 'admin@site.com';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +33,7 @@ $config['base_url']	= '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +231,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'a3vw8pG8U5z3VwQnB007Vhes9a1g6jk9';
 
 /*
 |--------------------------------------------------------------------------
@@ -279,7 +286,7 @@ $config['cookie_secure']	= FALSE;
 | COOKIE data is encountered
 |
 */
-$config['global_xss_filtering'] = FALSE;
+$config['global_xss_filtering'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -341,7 +348,7 @@ $config['time_reference'] = 'local';
 | in your view files.  Options are TRUE or FALSE (boolean)
 |
 */
-$config['rewrite_short_tags'] = FALSE;
+$config['rewrite_short_tags'] = TRUE;
 
 
 /*
