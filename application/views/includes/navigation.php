@@ -294,7 +294,7 @@
 							<li class="divider"></li>
 							<li><a href="javascript:;" id="trigger_fullscreen"><i class="icon-move"></i> Full Screen</a></li>
 							<li><a href="extra_lock.html"><i class="icon-lock"></i> Lock Screen</a></li>
-							<li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+							<li><a href="<?php echo site_url('dashboard/logout'); ?>"><i class="icon-key"></i> Log Out</a></li>
 						</ul>
 					</li>
 					<!-- END USER LOGIN DROPDOWN -->

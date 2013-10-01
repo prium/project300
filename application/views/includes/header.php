@@ -8,7 +8,7 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
 <head>
 	<meta charset="utf-8" />
-	<title>Metronic | Layouts - Blank Page</title>
+	<title><?php echo (isset($pageTitle))? $pageTitle : ''; ?> | <?php echo $this->config->item('siteName'); ?></title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />

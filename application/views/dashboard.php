@@ -92,5 +92,3 @@
 	<!-- END PAGE CONTAINER--> 
 </div>
 <!-- END PAGE -->
-
-<?php print_r($this); ?>
