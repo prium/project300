@@ -5,7 +5,7 @@
 			<div class="container-fluid">
 				<!-- BEGIN LOGO -->
 				<a class="brand" href="index.html">
-				<img src="assets/img/logo.png" alt="logo" />
+				<img src="<?php echo site_url(); ?>/assets/img/logo.png" alt="logo" />
 				</a>
 				<!-- END LOGO -->
 				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
