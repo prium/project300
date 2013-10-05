@@ -42,7 +42,7 @@ $route['default_controller'] = "user";
 $route['404_override'] = '';
 
 $route['projects/add-new'] = "projects/addNew";
-
+$route['projects/process-new'] = "projects/processNew";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

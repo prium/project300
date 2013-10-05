@@ -2,6 +2,12 @@
 
 class Projects extends Auth {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('project_model', 'project');
+	}
+
 	/**
 	 * [index description]
 	 * @return [type] [description]
@@ -19,10 +25,23 @@ class Projects extends Auth {
 		$data = array
 		(
 			'pageTitle'		=>	'Add New Project',
-			'pageLocation'	=>	'projects/add'
+			'pageLocation'	=>	'projects/add',
+			'categories'	=>	array('' => '-- select --') + $this->project->getCategories()
 		);
 
 		$this->load->view($this->layout, $data);
+	}
+
+	/**
+	 * process a new project
+	 * @return
+	 */
+	function processNew()
+	{
+		if($this->project->addNew())
+			echo "Success";
+		else
+			echo "Error";
 	}
 
 }

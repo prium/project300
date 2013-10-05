@@ -3,7 +3,7 @@
 	<div class="span12">
 		
 		<!-- BEGIN FORM-->
-		<form action="fsdf" id="requiredForm" class="form-horizontal" novalidate="novalidate">
+		<form action="<?php echo site_url('projects/process-new'); ?>" id="requiredForm" class="form-horizontal" novalidate="novalidate" method="post">
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption"><i class="icon-reorder"></i>Basic Information</div>
@@ -35,13 +35,7 @@
 					<div class="control-group">
 						<label class="control-label">Status<span class="required">*</span></label>
 						<div class="controls">
-							<select class="span6 m-wrap" name="projectStatus">
-								<option value="">Select...</option>
-								<option value="Category 1">Category 1</option>
-								<option value="Category 2">Category 2</option>
-								<option value="Category 3">Category 5</option>
-								<option value="Category 4">Category 4</option>
-							</select>
+							<?php echo form_dropdown('projectStatus', $categories, '', 'class="span6 m-wrap"'); ?>
 						</div>
 					</div>
 					
@@ -49,7 +43,7 @@
 						<label class="control-label">Start Date</label>
 						<div class="controls">
 							<div class="input-prepend span6 m-wrap">
-								<span class="add-on"><i class="icon-calendar"></i></span><input type="text" class="m-wrap date-picker" name="startDate">
+								<span class="add-on"><i class="icon-calendar"></i></span><input type="text" class="m-wrap date-picker" data-date-format="yyyy-mm-dd" name="startDate">
 							</div>
 						</div>
 					</div>
@@ -58,7 +52,7 @@
 						<label class="control-label">End Date</label>
 						<div class="controls">
 							<div class="input-prepend span6 m-wrap">
-								<span class="add-on"><i class="icon-calendar"></i></span><input type="text" class="m-wrap date-picker" name="endDate">
+								<span class="add-on"><i class="icon-calendar"></i></span><input type="text" class="m-wrap date-picker" data-date-format="yyyy-mm-dd" name="endDate">
 							</div>
 						</div>
 					</div>
@@ -74,9 +68,9 @@
 				</div>
 				<div class="portlet-body form">
 					<div class="control-group">
-						<label class="control-label">Project Details</label>
+						<label class="control-label">Project Description</label>
 						<div class="controls">
-							<textarea class="span12 wysihtml5 m-wrap" rows="10" name="editor1" data-error-container="#editor1_error"></textarea>
+							<textarea class="span12 wysihtml5 m-wrap" rows="10" name="projectDescription" data-error-container="#editor1_error"></textarea>
 							<div id="editor1_error"></div>
 						</div>
 					</div>
