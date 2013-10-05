@@ -13,14 +13,14 @@
 	<meta content="" name="description" />
 	<meta content="" name="author" />
 	<!-- BEGIN GLOBAL MANDATORY STYLES -->
-	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/css/style-metro.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
-	<link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo site_url(); ?>/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo site_url(); ?>/assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo site_url(); ?>/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo site_url(); ?>/assets/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo site_url(); ?>/assets/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo site_url(); ?>/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo site_url(); ?>/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="<?php echo site_url(); ?>/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 	<!-- END GLOBAL MANDATORY STYLES -->
 	<link rel="shortcut icon" href="favicon.ico" />
 </head>
