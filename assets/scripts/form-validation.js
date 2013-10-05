@@ -67,10 +67,12 @@ var FormValidation = function () {
                     .closest('.control-group').removeClass('error').addClass('success'); // set success class to the control group
                 },
 
-                submitHandler: function (form) {
+                /*
+	            submitHandler: function (form) {
                     success1.show();
                     error1.hide();
                 }
+                */
             });
     }
 

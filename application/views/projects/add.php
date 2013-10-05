@@ -3,7 +3,7 @@
 	<div class="span12">
 		
 		<!-- BEGIN FORM-->
-		<form action="" id="requiredForm" class="form-horizontal" novalidate="novalidate">
+		<form action="fsdf" id="requiredForm" class="form-horizontal" novalidate="novalidate">
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption"><i class="icon-reorder"></i>Basic Information</div>
