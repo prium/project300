@@ -22,7 +22,7 @@
 	<link href="<?php echo site_url(); ?>/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 	<link href="<?php echo site_url(); ?>/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 	<!-- END GLOBAL MANDATORY STYLES -->
-	<link rel="shortcut icon" href="favicon.ico" />
+	<link rel="shortcut icon" href="<?php echo site_url(); ?>/favicon.ico" />
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
