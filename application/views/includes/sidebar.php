@@ -24,7 +24,7 @@
 					</a>
 					<ul class="sub-menu">
 						<li >
-							<a href="layout_language_bar.html">Add New</a>
+							<a href="<?php echo site_url('projects/add-new'); ?>">Add New</a>
 						</li>
 						<li >
 							<a href="layout_horizontal_sidebar_menu.html">View All</a>
