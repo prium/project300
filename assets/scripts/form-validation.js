@@ -1,10 +1,10 @@
 var FormValidation = function () {
 
-    var handleValidation1 = function() {
+    var addProjectValidation = function() {
         // for more info visit the official plugin documentation: 
-            // http://docs.jquery.com/Plugins/Validation
+        // http://docs.jquery.com/Plugins/Validation
 
-            var form1 = $('#form_sample_1');
+            var form1 = $('#requiredForm');
             var error1 = $('.alert-error', form1);
             var success1 = $('.alert-success', form1);
 
@@ -14,25 +14,22 @@ var FormValidation = function () {
                 focusInvalid: false, // do not focus the last invalid input
                 ignore: "",
                 rules: {
-                    name: {
+                    projectName: {
                         minlength: 2,
                         required: true
                     },
-                    email: {
+                    projectSlug: {
+   		                minlength: 2,
                         required: true,
-                        email: true
                     },
-                    url: {
+                    projectStatus: {
                         required: true,
-                        url: true
                     },
-                    number: {
+                    startDate: {
                         required: true,
-                        number: true
                     },
-                    digits: {
+                    endDate: {
                         required: true,
-                        digits: true
                     },
                     creditcard: {
                         required: true,
@@ -235,7 +232,7 @@ var FormValidation = function () {
         init: function () {
 
             handleWysihtml5();
-            handleValidation1();
+            addProjectValidation();
             handleValidation2();
 
         }

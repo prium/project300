@@ -22,6 +22,14 @@
 	<link href="<?php echo site_url(); ?>/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 	<link href="<?php echo site_url(); ?>/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 	<!-- END GLOBAL MANDATORY STYLES -->
+
+	<!-- BEGIN PAGE LEVEL STYLES -->
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>/assets/plugins/select2/select2_metro.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>/assets/plugins/chosen-bootstrap/chosen/chosen.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>/assets/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+	<!-- END PAGE LEVEL STYLES -->
+
+	
 	<link rel="shortcut icon" href="<?php echo site_url(); ?>/favicon.ico" />
 </head>
 <!-- END HEAD -->
