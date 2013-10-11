@@ -6,6 +6,9 @@ class Projects extends Auth {
 	{
 		parent::__construct();
 		$this->load->model('project_model', 'project');
+
+		$this->breadcrumbs->push('Home', site_url('dashboard'));
+		$this->breadcrumbs->push('Projects', site_url('projects'));
 	}
 
 	/**
@@ -22,6 +25,8 @@ class Projects extends Auth {
 	 */
 	public function addNew()
 	{
+		$this->breadcrumbs->push('Add Project', site_url('projects/add-new'));
+
 		$data = array
 		(
 			'pageTitle'		=>	'Add New Project',
@@ -39,9 +44,14 @@ class Projects extends Auth {
 	function processNew()
 	{
 		if($this->project->addNew())
-			echo "Success";
+		{
+			$this->session->set_flashdata('success', 'Project successfully addded');
+		}
 		else
-			echo "Error";
+		{
+			$this->session->set_flashdata('error', 'Project could not be addded. Try again.');
+		}
+		redirect('projects/add-new');
 	}
 
 }

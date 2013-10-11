@@ -50,22 +50,14 @@
 					</div>
 				</div>
 				<!-- END BEGIN STYLE CUSTOMIZER --> 
+				
 				<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 				<h3 class="page-title">
 					<?php echo $pageTitle; ?>
 				</h3>
-				<ul class="breadcrumb">
-					<li>
-						<i class="icon-home"></i>
-						<a href="index.html">Home</a> 
-						<i class="icon-angle-right"></i>
-					</li>
-					<li>
-						<a href="#">Layouts</a>
-						<i class="icon-angle-right"></i>
-					</li>
-					<li><a href="#">Blank Page</a></li>
-				</ul>
+
+				<?php echo $this->breadcrumbs->show(); ?>
+				
 				<!-- END PAGE TITLE & BREADCRUMB-->
 			</div>
 		</div>

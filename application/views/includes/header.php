@@ -29,8 +29,9 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>/assets/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
 	<!-- END PAGE LEVEL STYLES -->
 
-	
 	<link rel="shortcut icon" href="<?php echo site_url(); ?>/favicon.ico" />
+
+	<script src="<?php echo site_url(); ?>/assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->

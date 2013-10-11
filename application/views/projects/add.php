@@ -4,6 +4,7 @@
 		
 		<!-- BEGIN FORM-->
 		<form action="<?php echo site_url('projects/process-new'); ?>" id="requiredForm" class="form-horizontal" novalidate="novalidate" method="post">
+			<?php $this->load->view('includes/notify'); ?>
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption"><i class="icon-reorder"></i>Basic Information</div>
@@ -23,13 +24,13 @@
 					<div class="control-group">
 						<label class="control-label">Project Name<span class="required">*</span></label>
 						<div class="controls">
-							<input type="text" name="projectName" data-required="1" class="span6 m-wrap">
+							<input type="text" name="projectName" id="projectName" data-required="1" class="span6 m-wrap">
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Slug<span class="required">*</span></label>
 						<div class="controls">
-							<input name="projectSlug" type="text" class="span6 m-wrap">
+							<input name="projectSlug" id="projectSlug" type="text" class="span6 m-wrap">
 						</div>
 					</div>
 					<div class="control-group">
@@ -40,7 +41,7 @@
 					</div>
 					
 					<div class="control-group">
-						<label class="control-label">Start Date</label>
+						<label class="control-label">Start Date<span class="required">*</span></label>
 						<div class="controls">
 							<div class="input-prepend span6 m-wrap">
 								<span class="add-on"><i class="icon-calendar"></i></span><input type="text" class="m-wrap date-picker" data-date-format="yyyy-mm-dd" name="startDate">
@@ -49,7 +50,7 @@
 					</div>
 					
 					<div class="control-group">
-						<label class="control-label">End Date</label>
+						<label class="control-label">End Date<span class="required">*</span></label>
 						<div class="controls">
 							<div class="input-prepend span6 m-wrap">
 								<span class="add-on"><i class="icon-calendar"></i></span><input type="text" class="m-wrap date-picker" data-date-format="yyyy-mm-dd" name="endDate">
@@ -85,7 +86,7 @@
 			</div><!--/portlet box grey-->
 			<div class="form-actions">
 				<button type="submit" class="btn green">Submit</button>
-				<button type="button" class="btn">Cancel</button>
+				<input type="reset" class="btn" value="Cancel">
 			</div>
 		</form>
 		<!-- END FORM-->
@@ -93,4 +94,23 @@
 	</div><!--/span12-->
 </div>
 <!-- END PAGE CONTENT-->
+
+<script type="text/javascript">
+	jQuery(document).ready(function()
+	{
+		jQuery('#projectName').keyup(function()
+		{
+			var projectName = jQuery(this).val();
+			jQuery('#projectSlug').val(convertToSlug(projectName));
+		});
+
+		function convertToSlug(Text)
+		{
+		    return Text
+		        .toLowerCase()
+		        .replace(/ /g,'-')
+		        .replace(/[^\w-]+/g,'');
+		}
+	});
+</script>
 
