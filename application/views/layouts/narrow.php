@@ -45,6 +45,7 @@
 				<button class="close" data-dismiss="alert"></button>
 				<span>Enter any username and password.</span>
 			</div>
+			<?php $this->load->view('includes/notify'); ?>
 			<div class="control-group">
 				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 				<label class="control-label visible-ie8 visible-ie9">Username</label>

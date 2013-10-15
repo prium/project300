@@ -7,17 +7,23 @@ class Projects extends Auth {
 		parent::__construct();
 		$this->load->model('project_model', 'project');
 
+		# for making breadcrumbs
 		$this->breadcrumbs->push('Home', site_url('dashboard'));
 		$this->breadcrumbs->push('Projects', site_url('projects'));
 	}
 
 	/**
-	 * [index description]
-	 * @return [type] [description]
+	 * view all projects
 	 */
 	public function index()
 	{
-		// will be all projects
+		$data = array
+		(
+			'pageTitle'		=>	'View All Project',
+			'pageLocation'	=>	'projects/viewAll'
+		);
+
+		$this->load->view($this->layout, $data);
 	}
 
 	/**
