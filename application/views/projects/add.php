@@ -3,7 +3,7 @@
 	<div class="span12">
 		
 		<!-- BEGIN FORM-->
-		<form action="<?php echo site_url('projects/process-new'); ?>" id="requiredForm" class="form-horizontal" novalidate="novalidate" method="post">
+		<form action="<?php echo site_url('projects/process-new'); ?>" id="requiredFormProject" class="form-horizontal" novalidate="novalidate" method="post">
 			<?php $this->load->view('includes/notify'); ?>
 			<div class="portlet box blue">
 				<div class="portlet-title">

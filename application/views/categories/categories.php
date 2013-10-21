@@ -7,7 +7,7 @@
 			<div class="span12">
 				
 				<!-- BEGIN FORM-->
-				<form action="<?php echo site_url('projects/process-new'); ?>" id="requiredForm" class="form-horizontal" novalidate="novalidate" method="post">
+				<form action="<?php echo site_url('categories/process-new'); ?>" id="requiredFormCategory" class="form-horizontal" novalidate="novalidate" method="post">
 					<?php $this->load->view('includes/notify'); ?>
 					<div class="portlet box blue">
 						<div class="portlet-title">
@@ -28,21 +28,23 @@
 							<div class="control-group">
 								<label class="control-label">Name<span class="required">*</span></label>
 								<div class="controls">
-									<input type="text" name="projectName" id="projectName" data-required="1" class="span6 m-wrap">
+									<input type="text" name="categoryName" id="categoryName" data-required="1" class="span10 m-wrap">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Slug<span class="required">*</span></label>
 								<div class="controls">
-									<input name="projectSlug" id="projectSlug" type="text" class="span6 m-wrap">
+									<input name="categorySlug" id="categorySlug" type="text" class="span10 m-wrap">
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label">Parent<span class="required">*</span></label>
+								<label class="control-label">Parent</label>
 								<div class="controls">
-									<?php echo form_dropdown('projectStatus', $categories, '', 'class="span6 m-wrap"'); ?>
+									<?php echo form_dropdown('categoryParent', $categories, '', 'class="span10 m-wrap"'); ?>
 								</div>
 							</div>
+
+							<?php echo form_hidden('categoryType', $categoryType); ?>
 							
 						</div>
 					</div><!--/portlet box grey-->
@@ -66,3 +68,22 @@
 	</div><!--/span6-->
 
 </div><!--/row-fluid-->
+
+<script type="text/javascript">
+	jQuery(document).ready(function()
+	{
+		jQuery('#categoryName').keyup(function()
+		{
+			var categoryName = jQuery(this).val();
+			jQuery('#categorySlug').val(convertToSlug(categoryName));
+		});
+
+		function convertToSlug(Text)
+		{
+		    return Text
+		        .toLowerCase()
+		        .replace(/ /g,'-')
+		        .replace(/[^\w-]+/g,'');
+		}
+	});
+</script>
