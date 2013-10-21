@@ -27,7 +27,7 @@
 							<a href="<?php echo site_url('projects/add-new'); ?>"><i class="icon-plus-sign-alt"></i> Add New</a>
 						</li>
 						<li >
-							<a href="layout_horizontal_sidebar_menu.html"><i class="icon-list"></i> View All</a>
+							<a href="<?php echo site_url('projects'); ?>"><i class="icon-list"></i> View All</a>
 						</li>
 						<li >
 							<a href="<?php echo site_url('categories/project'); ?>"><i class="icon-tags"></i> Categories</a>
