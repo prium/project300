@@ -40,7 +40,7 @@ class Stuff extends Auth {
 	public function __construct()
 	{
 		parent::__construct();
-		if($this->session->userdata('role') != 2) redirect('dashboard');
+		if($this->session->userdata('role') > 2) redirect('dashboard');
 	}
 }
 
