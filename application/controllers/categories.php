@@ -6,17 +6,40 @@ class Categories extends Stuff {
 	{
 		parent::__construct();
 		$this->load->model('categories_model', 'category');
+
+		# for making breadcrumbs
+		$this->breadcrumbs->push('Home', site_url('dashboard'));
+		$this->breadcrumbs->push('Projects', site_url('projects'));
+		$this->breadcrumbs->push('Categories', site_url('categories'));
+	}
+
+	/**
+	 * redirect to project
+	 * @return void
+	 */
+	function index()
+	{
+		$this->project();
+	}
+
+	/**
+	 * redirect to project
+	 * @return void
+	 */
+	function income()
+	{
+		redirect('categories/project');
 	}
 
 	/**
 	 * income page of categories
 	 * @return void
 	 */
-	public function income()
+	public function project()
 	{
 		$data = array
 		(
-			'pageTitle'		=>	'Income Categories',
+			'pageTitle'		=>	'Project Categories',
 			'pageLocation'	=>	'categories/categories',
 			'categoryType'	=>	'income',
 			'categories'	=>	$this->category->incomeParent()
@@ -51,6 +74,8 @@ class Categories extends Stuff {
 		{
 			$this->session->set_flashdata('error', 'Category could not be addded. Try again.');
 		}
+		if($this->input->post('categoryType') == 'income') redirect('categories/project');
+
 		redirect('categories/'.$this->input->post('categoryType'));
 	}
 
