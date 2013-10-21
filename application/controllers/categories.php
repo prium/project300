@@ -10,7 +10,7 @@ class Categories extends Stuff {
 	{
 		$data = array
 		(
-			'pageTitle'		=>	'Categories',
+			'pageTitle'		=>	'Income Categories',
 			'pageLocation'	=>	'categories/categories',
 			'categoryType'	=>	'income'
 		);
@@ -26,7 +26,7 @@ class Categories extends Stuff {
 	{
 		$data = array
 		(
-			'pageTitle'		=>	'Categories',
+			'pageTitle'		=>	'Expense Categories',
 			'pageLocation'	=>	'categories/categories',
 			'categoryType'	=>	'expense'
 		);
