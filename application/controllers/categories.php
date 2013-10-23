@@ -5,7 +5,7 @@ class Categories extends Stuff {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('categories_model', 'category');
+		$this->load->model('category_model', 'category');
 
 		# for making breadcrumbs
 		$this->breadcrumbs->push('Home', site_url('dashboard'));
@@ -42,7 +42,7 @@ class Categories extends Stuff {
 			'pageTitle'		=>	'Project Categories',
 			'pageLocation'	=>	'categories/categories',
 			'categoryType'	=>	'income',
-			'categories'	=>	$this->category->incomeParent()
+			'categories'	=>	$this->category->parentList('income')
 		);
 
 		$this->load->view($this->layout, $data);	

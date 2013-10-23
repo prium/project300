@@ -36,7 +36,7 @@
 					<div class="control-group">
 						<label class="control-label">Status<span class="required">*</span></label>
 						<div class="controls">
-							<?php echo form_dropdown('projectStatus', $categories, '', 'class="span6 m-wrap"'); ?>
+							<?php echo form_dropdown('projectStatus', $statusList, '', 'class="span6 m-wrap"'); ?>
 						</div>
 					</div>
 					
@@ -55,6 +55,33 @@
 							<div class="input-prepend span6 m-wrap">
 								<span class="add-on"><i class="icon-calendar"></i></span><input type="text" class="m-wrap date-picker" data-date-format="yyyy-mm-dd" name="endDate">
 							</div>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">Project Category<span class="required">*</span></label>
+						<div class="controls">
+							<?php foreach ($categoryList as $category): ?>
+								
+								<?php if(count($category->subCategory)): ?>
+									<label class="checkbox">
+										<?php echo $category->name; ?>
+									</label>
+									
+									<?php foreach ($category->subCategory as $subCategory): ?>
+										<label class="checkbox space">
+											<input type="checkbox" name="category[]" value="<?php echo $subCategory->id; ?>"> <?php echo $subCategory->name; ?>
+										</label>
+									<?php endforeach; ?>
+							  	
+							  	<?php else: ?>
+							  	<label class="checkbox">
+							  		<input type="checkbox" name="category[]" value="<?php echo $category->id; ?>"> <?php echo $category->name; ?>
+								<?php endif; ?>
+								</label>
+
+							<?php endforeach; ?>
+							
 						</div>
 					</div>
 				</div>
@@ -113,4 +140,15 @@
 		}
 	});
 </script>
+
+<style type="text/css">
+.controls > .radio, .controls > .checkbox
+{
+	display: block;
+}
+.checker
+{
+	margin-left: 15px!important;
+}
+</style>
 

@@ -32,12 +32,14 @@ class Projects extends Auth {
 	public function addNew()
 	{
 		$this->breadcrumbs->push('Add Project', site_url('projects/add-new'));
+		$this->load->model('category_model', 'category');
 
 		$data = array
 		(
 			'pageTitle'		=>	'Add New Project',
 			'pageLocation'	=>	'projects/add',
-			'categories'	=>	array('' => '-- select --') + $this->project->getCategories()
+			'statusList'	=>	array('' => '-- select --') + $this->project->getStatusList(),
+			'categoryList'	=>	$this->category->fullList('income')
 		);
 
 		$this->load->view($this->layout, $data);

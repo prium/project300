@@ -9,10 +9,10 @@ class Project_model extends P300_model {
 	}
 
 	/**
-	 * get categories of projects
+	 * get list of status of projects
 	 * @return array
 	 */
-	function getCategories()
+	function getStatusList()
 	{
 		return array(
 			'upcoming'			=> 'Upcoming',

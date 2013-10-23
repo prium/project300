@@ -9,6 +9,12 @@ class User_model extends P300_model {
 	}
 
 
+	/**
+	 * Login a user
+	 * @param  string $username
+	 * @param  string $password
+	 * @return boolean
+	 */
 	function processLogin($username = null, $password = null)
 	{
 		$isLoggedIn =  $this->db
