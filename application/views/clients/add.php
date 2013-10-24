@@ -22,21 +22,25 @@
 						Your form validation is successful!
 					</div>
 					<div class="control-group">
-						<label class="control-label">Project Name<span class="required">*</span></label>
+						<label class="control-label">Name<span class="required">*</span></label>
 						<div class="controls">
-							<input type="text" name="projectName" id="projectName" data-required="1" class="span6 m-wrap">
+							<input type="text" name="clientName" id="clientName" data-required="1" class="span6 m-wrap">
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">Slug<span class="required">*</span></label>
+						<label class="control-label">Email<span class="required">*</span></label>
 						<div class="controls">
-							<input name="projectSlug" id="projectSlug" type="text" class="span6 m-wrap">
+							<input name="clientEmail" id="clientEmail" type="email" class="span6 m-wrap">
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">Status<span class="required">*</span></label>
+						<label class="control-label">Gender<span class="required">*</span></label>
 						<div class="controls">
-							<?php echo form_dropdown('projectStatus', $statusList, '', 'class="span6 m-wrap"'); ?>
+							<select class="span6 m-wrap">
+								<option value="">select</option>
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+							</select>
 						</div>
 					</div>
 					
@@ -50,7 +54,7 @@
 					</div>
 					
 					<div class="control-group">
-						<label class="control-label">End Date<span class="required">*</span></label>
+						<label class="control-label">End Date</label>
 						<div class="controls">
 							<div class="input-prepend span6 m-wrap">
 								<span class="add-on"><i class="icon-calendar"></i></span><input type="text" class="m-wrap date-picker" data-date-format="yyyy-mm-dd" name="endDate">
@@ -60,19 +64,6 @@
 				</div>
 			</div><!--/portlet box grey-->
 
-			<!-- clients and employees -->
-			<div class="portlet box blue">
-				<div class="portlet-title">
-					<div class="caption"><i class="icon-reorder"></i>Clients & Employees</div>
-					<div class="tools">
-						<a href="javascript:;" class="collapse"></a>
-					</div>
-				</div>
-				<div class="portlet-body form">
-				</div>
-			</div><!--/portlet box grey-->
-			<!-- /clients and employees -->
-
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption"><i class="icon-reorder"></i>Other Information</div>
@@ -81,45 +72,33 @@
 					</div>
 				</div>
 				<div class="portlet-body form">
-					<!-- project categories checkbox -->
 					<div class="control-group">
-						<label class="control-label">Project Category</label>
+						<label class="control-label">Organization</label>
 						<div class="controls">
-							<?php foreach ($categoryList as $category): ?>
-								
-								<?php if(count($category->subCategory)): ?>
-									<label class="checkbox">
-										<input type="checkbox" name="category[]" value="<?php echo $category->id; ?>"> <?php echo $category->name; ?>
-									</label>
-									
-									<?php foreach ($category->subCategory as $subCategory): ?>
-										<label class="checkbox space">
-											<input type="checkbox" name="category[]" value="<?php echo $subCategory->id; ?>"> <?php echo $subCategory->name; ?>
-										</label>
-									<?php endforeach; ?>
-							  	
-							  	<?php else: ?>
-							  	<label class="checkbox">
-							  		<input type="checkbox" name="category[]" value="<?php echo $category->id; ?>"> <?php echo $category->name; ?>
-								<?php endif; ?>
-								</label>
-
-							<?php endforeach; ?>
-							
+							<input name="clientOrg" id="clientOrg" type="text" class="span6 m-wrap">
+							<div id="editor1_error"></div>
 						</div>
 					</div>
-					<!-- /project categories checkbox -->
+
 					<div class="control-group">
-						<label class="control-label">Project Description</label>
+						<label class="control-label">Address</label>
 						<div class="controls">
-							<textarea class="span12 wysihtml5 m-wrap" rows="10" name="projectDescription" data-error-container="#editor1_error"></textarea>
+							<textarea class="span12 wysihtml5 m-wrap" rows="10" name="clientAddress" data-error-container="#editor1_error"></textarea>
+							<div id="editor1_error"></div>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">Client Details</label>
+						<div class="controls">
+							<textarea class="span12 wysihtml5 m-wrap" rows="10" name="clientDetails" data-error-container="#editor1_error"></textarea>
 							<div id="editor1_error"></div>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Comment</label>
 						<div class="controls">
-							<textarea class="span12 m-wrap" rows="6" name="projectComment" data-error-container="#editor2_error"></textarea>
+							<textarea class="span12 m-wrap" rows="6" name="clientComment" data-error-container="#editor2_error"></textarea>
 							<div id="editor2_error"></div>
 						</div>
 					</div>
@@ -136,24 +115,6 @@
 </div>
 <!-- END PAGE CONTENT-->
 
-<script type="text/javascript">
-	jQuery(document).ready(function()
-	{
-		jQuery('#projectName').keyup(function()
-		{
-			var projectName = jQuery(this).val();
-			jQuery('#projectSlug').val(convertToSlug(projectName));
-		});
-
-		function convertToSlug(Text)
-		{
-		    return Text
-		        .toLowerCase()
-		        .replace(/ /g,'-')
-		        .replace(/[^\w-]+/g,'');
-		}
-	});
-</script>
 
 <style type="text/css">
 .controls > .radio, .controls > .checkbox

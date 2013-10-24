@@ -4,8 +4,6 @@
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <!-- BEGIN HEAD -->
 
-<!-- Mirrored from www.keenthemes.com/preview/metronic_admin/layout_blank_page.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 29 Sep 2013 14:55:27 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
 <head>
 	<meta charset="utf-8" />
 	<title><?php echo (isset($pageTitle))? $pageTitle : ''; ?> | <?php echo $this->config->item('siteName'); ?></title>

@@ -7,7 +7,7 @@
 	<!-- BEGIN FOOTER -->
 	<div class="footer">
 		<div class="footer-inner">
-			2013 &copy; Metronic by keenthemes.
+			Developed as Project300 by Prium & Anindya
 		</div>
 		<div class="footer-tools">
 			<span class="go-top">
@@ -61,7 +61,4 @@
 	<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
-
-<!-- Mirrored from www.keenthemes.com/preview/metronic_admin/layout_blank_page.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 29 Sep 2013 14:55:27 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
 </html>

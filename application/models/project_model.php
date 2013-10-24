@@ -40,7 +40,24 @@ class Project_model extends P300_model {
 			'comment'		=>	($this->input->post('projectComment') == '') ? NULL:$this->input->post('projectComment')
 		);
 
-		return $this->db->insert($this->table, $data);
+		if($this->db->insert($this->table, $data))
+		{
+			$projectId = $this->db->insert_id();
+
+			$categoryIds = $this->input->post('category');
+
+			foreach($categoryIds as $categoryId)
+			{
+				$data1 = array(
+					'projectId'		=>	$projectId,
+					'categoryId'	=>	$categoryId
+				);
+
+				if(!$this->db->insert('projectCategories', $data1)) return false;
+			}
+			return true;
+		}
+		else return false;
 	}
 
 

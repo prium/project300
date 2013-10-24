@@ -46,5 +46,8 @@ $route['projects/process-new'] = "projects/processNew";
 
 $route['categories/process-new'] = "categories/processNew";
 
+$route['clients/add-new'] = "clients/addNew";
+$route['clients/process-new'] = "clients/processNew";
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

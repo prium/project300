@@ -34,6 +34,22 @@
 						</li>
 					</ul>
 				</li>
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-file-text"></i> 
+					<span class="title">Clients</span>
+					<span class="selected"></span>
+					<span class="arrow open"></span>
+					</a>
+					<ul class="sub-menu">
+						<li >
+							<a href="<?php echo site_url('clients/add-new'); ?>"><i class="icon-plus-sign-alt"></i> Add New</a>
+						</li>
+						<li >
+							<a href="<?php echo site_url('clients'); ?>"><i class="icon-list"></i> View All</a>
+						</li>
+					</ul>
+				</li>
 				<li class="last ">
 					<a href="charts.html">
 					<i class="icon-bar-chart"></i> 

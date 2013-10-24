@@ -4,8 +4,6 @@
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <!-- BEGIN HEAD -->
 
-<!-- Mirrored from www.keenthemes.com/preview/metronic_admin/login.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 29 Sep 2013 14:53:46 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
 <head>
 	<meta charset="utf-8" />
 	<title><?php echo (isset($pageTitle))? $pageTitle : ''; ?> | <?php echo $this->config->item('siteName'); ?></title>
@@ -446,7 +444,7 @@
 	<!-- END LOGIN -->
 	<!-- BEGIN COPYRIGHT -->
 	<div class="copyright">
-		2013 &copy; Metronic. Admin Dashboard Template.
+		Developed as Project300 by Prium & Anindya
 	</div>
 	<!-- END COPYRIGHT -->
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
@@ -483,9 +481,7 @@
 		});
 	</script>
 	<!-- END JAVASCRIPTS -->
-<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
+</body>
 <!-- END BODY -->
 
-<!-- Mirrored from www.keenthemes.com/preview/metronic_admin/login.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 29 Sep 2013 14:53:53 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
 </html>
