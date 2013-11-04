@@ -3,7 +3,7 @@
 	<div class="span12">
 		
 		<!-- BEGIN FORM-->
-		<form action="<?php echo site_url('projects/process-new'); ?>" id="requiredFormProject" class="form-horizontal" novalidate="novalidate" method="post">
+		<form action="<?php echo site_url('clients/process-new'); ?>" id="requiredFormClient" class="form-horizontal" novalidate="novalidate" method="post">
 			<?php $this->load->view('includes/notify'); ?>
 			<div class="portlet box blue">
 				<div class="portlet-title">
@@ -36,7 +36,7 @@
 					<div class="control-group">
 						<label class="control-label">Gender<span class="required">*</span></label>
 						<div class="controls">
-							<select class="span6 m-wrap">
+							<select name="clientGender" class="span6 m-wrap">
 								<option value="">select</option>
 								<option value="male">Male</option>
 								<option value="female">Female</option>

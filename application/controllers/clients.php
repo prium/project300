@@ -6,6 +6,8 @@ class Clients extends Stuff {
 	{
 		parent::__construct();
 		
+		$this->load->model('client_model', 'client');
+		
 		# for making breadcrumbs
 		$this->breadcrumbs->push('Home', site_url('dashboard'));
 		$this->breadcrumbs->push('Clients', site_url('clients'));
@@ -24,6 +26,23 @@ class Clients extends Stuff {
 		);
 
 		$this->load->view($this->layout, $data);
+	}
+	
+	/**
+	 * process a new project
+	 * @return
+	 */
+	function processNew()
+	{
+		if($this->client->addNew())
+		{
+			$this->session->set_flashdata('success', 'Client successfully addded');
+		}
+		else
+		{
+			$this->session->set_flashdata('error', 'Client could not be addded. Try again.');
+		}
+		redirect('clients/add-new');
 	}
 
 }
