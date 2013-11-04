@@ -2,6 +2,11 @@
 
 class Category_model extends P300_model {
 
+	function __construct()
+	{
+		$this->table = 'categories';
+	}
+
 	/**
 	 * returns parent categories by type
 	 * @param  string  $type          income/expense
@@ -14,7 +19,7 @@ class Category_model extends P300_model {
 						->select('id, name')
 						->where('type', $type)
 						->where('parent', null)
-						->get('categories')
+						->get($this->table)
 						->result();
 		if($buildDropdown) return $this->buildDropdown($categories);
 		else return $categories;
@@ -58,7 +63,7 @@ class Category_model extends P300_model {
 			'parent'=>	($this->input->post('categoryParent') == 0) ? null : $this->input->post('categoryParent')
 		);
 
-		return $this->db->insert('categories', $data);
+		return $this->db->insert($this->table, $data);
 	}
 
 }

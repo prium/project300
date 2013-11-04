@@ -1,0 +1,9 @@
+.day:hover
+{
+    background: rgb(226, 226, 226);
+}
+
+.day
+{
+    cursor: pointer;
+}

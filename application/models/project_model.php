@@ -26,7 +26,7 @@ class Project_model extends P300_model {
 
 	/**
 	 * adds a new project to database
-	 * @return boolean
+	 * @return false/project last insert id
 	 */
 	function addNew()
 	{
@@ -44,18 +44,30 @@ class Project_model extends P300_model {
 		{
 			$projectId = $this->db->insert_id();
 
-			$categoryIds = $this->input->post('category');
+			$categoryIds = $this->input->post('categories');
 
 			foreach($categoryIds as $categoryId)
 			{
-				$data1 = array(
+				$data1 = array (
 					'projectId'		=>	$projectId,
 					'categoryId'	=>	$categoryId
 				);
 
 				if(!$this->db->insert('projectCategories', $data1)) return false;
 			}
-			return true;
+
+			$clientIds = $this->input->post('clients');
+
+			foreach($clientIds as $client)
+			{
+				$data2 = array (
+					'projectId'		=>	$projectId,
+					'clientId'		=>	$client
+				);
+
+				if(!$this->db->insert('projectClients', $data2)) return false;
+			}
+			return $projectId;
 		}
 		else return false;
 	}

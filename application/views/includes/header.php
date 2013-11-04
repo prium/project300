@@ -19,6 +19,7 @@
 	<link href="<?php echo site_url(); ?>/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
 	<link href="<?php echo site_url(); ?>/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 	<link href="<?php echo site_url(); ?>/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo site_url(); ?>/assets/css/custom.css" rel="stylesheet" type="text/css"/>
 	<!-- END GLOBAL MANDATORY STYLES -->
 
 	<!-- BEGIN PAGE LEVEL STYLES -->

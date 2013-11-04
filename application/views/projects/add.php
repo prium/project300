@@ -69,6 +69,18 @@
 					</div>
 				</div>
 				<div class="portlet-body form">
+					<!-- project clients checkbox -->
+					<div class="control-group">
+						<label class="control-label">Project Client</label>
+						<div class="controls">
+							<?php foreach ($clientList as $client): ?>
+							  	<label class="checkbox">
+							  		<input type="checkbox" name="clients[]" value="<?php echo $client->id; ?>"> <?php echo $client->name; ?>
+								</label>
+							<?php endforeach; ?>
+						</div>
+					</div>
+					<!-- /project clients checkbox -->
 				</div>
 			</div><!--/portlet box grey-->
 			<!-- /clients and employees -->
@@ -89,18 +101,18 @@
 								
 								<?php if(count($category->subCategory)): ?>
 									<label class="checkbox">
-										<input type="checkbox" name="category[]" value="<?php echo $category->id; ?>"> <?php echo $category->name; ?>
+										<input type="checkbox" name="categories[]" value="<?php echo $category->id; ?>"> <?php echo $category->name; ?>
 									</label>
 									
 									<?php foreach ($category->subCategory as $subCategory): ?>
 										<label class="checkbox space">
-											<input type="checkbox" name="category[]" value="<?php echo $subCategory->id; ?>"> <?php echo $subCategory->name; ?>
+											<input type="checkbox" name="categories[]" value="<?php echo $subCategory->id; ?>"> <?php echo $subCategory->name; ?>
 										</label>
 									<?php endforeach; ?>
 							  	
 							  	<?php else: ?>
 							  	<label class="checkbox">
-							  		<input type="checkbox" name="category[]" value="<?php echo $category->id; ?>"> <?php echo $category->name; ?>
+							  		<input type="checkbox" name="categories[]" value="<?php echo $category->id; ?>"> <?php echo $category->name; ?>
 								<?php endif; ?>
 								</label>
 

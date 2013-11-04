@@ -6,6 +6,21 @@ class Client_model extends P300_model {
 	{
 		$this->table = 'clients';
 	}
+
+	/**
+	 * returns list of all clients
+	 * @param  boolean $buildDropdown
+	 * @return array
+	 */
+	function allList($buildDropdown = true)
+	{
+		$clients = $this->db
+						->select('id, name')
+						->get($this->table)
+						->result();
+		if($buildDropdown) return $this->buildDropdown($clients);
+		else return $clients;
+	}
 	
 	/**
 	 * add a new client

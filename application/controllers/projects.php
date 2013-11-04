@@ -33,13 +33,15 @@ class Projects extends Auth {
 	{
 		$this->breadcrumbs->push('Add Project', site_url('projects/add-new'));
 		$this->load->model('category_model', 'category');
+		$this->load->model('client_model', 'client');
 
 		$data = array
 		(
 			'pageTitle'		=>	'Add New Project',
 			'pageLocation'	=>	'projects/add',
 			'statusList'	=>	array('' => '-- select --') + $this->project->getStatusList(),
-			'categoryList'	=>	$this->category->fullList('income')
+			'categoryList'	=>	$this->category->fullList('income'),
+			'clientList'	=>	$this->client->allList(false)
 		);
 
 		$this->load->view($this->layout, $data);
