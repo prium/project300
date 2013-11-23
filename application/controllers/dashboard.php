@@ -24,7 +24,9 @@ class Dashboard extends Auth {
 	public function logout()
 	{
 		$this->session->unset_userdata('id');
+		$this->session->unset_userdata('username');
 		$this->session->unset_userdata('role');
+
 
 		redirect();
 	}

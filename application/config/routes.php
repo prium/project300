@@ -49,5 +49,10 @@ $route['categories/process-new'] = "categories/processNew";
 $route['clients/add-new'] = "clients/addNew";
 $route['clients/process-new'] = "clients/processNew";
 
+$route['profile/(:any)/update-personal'] = "profile/updatePersonal/$1";
+$route['profile/(:any)/update-avatar'] = "profile/updateAvatar/$1";
+$route['profile/(:any)'] = "profile/index/$1"; //keep at at the last where route starts with 'profile'
+
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

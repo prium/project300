@@ -18,7 +18,7 @@ class User_model extends P300_model {
 	function processLogin($username = null, $password = null)
 	{
 		$isLoggedIn =  $this->db
-							->select('id, role')
+							->select('id, role, username')
 							->where('username', $username)
 							->where('password', do_hash($password, 'md5'))
 							->get($this->table)
@@ -27,11 +27,44 @@ class User_model extends P300_model {
 		if($isLoggedIn)
 		{
 			$this->session->set_userdata('id', $isLoggedIn->id);
+			$this->session->set_userdata('username', $isLoggedIn->username);
 			$this->session->set_userdata('role', $isLoggedIn->role);
 
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * find user info by username
+	 * @param  string $username
+	 * @return object
+	 */
+	function findByUsername($username)
+	{
+		return $this->db
+					->select($this->table.'.*, UR.name AS role')
+					->where($this->table.'.username', $username)
+					->from($this->table)
+					->join('userRoles as UR', $this->table.'.role = UR.id')
+					->get()
+					->row();
+	}
+
+	/**
+	 * update personal info by username
+	 * @param  string $username
+	 * @return boolean
+	 */
+	function updatePersonal($username = null)
+	{
+		$data = array
+		(
+			'fullName'	=>	$this->input->post('fullName'),
+			'email'		=>	$this->input->post('email')
+		);
+
+		return $this->db->where('username', $username)->update($this->table, $data);
 	}
 
 }

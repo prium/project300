@@ -4,7 +4,7 @@
 		<div class="navbar-inner">
 			<div class="container-fluid">
 				<!-- BEGIN LOGO -->
-				<a class="brand" href="index.html">
+				<a class="brand" href="<?php echo site_url(); ?>">
 				<img src="<?php echo site_url(); ?>/assets/img/logo.png" alt="logo" />
 				</a>
 				<!-- END LOGO -->
@@ -283,11 +283,11 @@
 					<li class="dropdown user">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<img alt="" src="<?php echo site_url(); ?>/assets/img/avatar1_small.jpg" />
-						<span class="username">Bob Nilson</span>
+						<span class="username"><?php echo $this->session->userdata('username'); ?></span>
 						<i class="icon-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="extra_profile.html"><i class="icon-user"></i> My Profile</a></li>
+							<li><a href="<?php echo site_url('profile/'.$this->session->userdata('username')); ?>"><i class="icon-user"></i> My Profile</a></li>
 							<li><a href="page_calendar.html"><i class="icon-calendar"></i> My Calendar</a></li>
 							<li><a href="inbox.html"><i class="icon-envelope"></i> My Inbox <span class="badge badge-important">3</span></a></li>
 							<li><a href="#"><i class="icon-tasks"></i> My Tasks <span class="badge badge-success">8</span></a></li>

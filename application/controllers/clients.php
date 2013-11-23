@@ -35,13 +35,9 @@ class Clients extends Stuff {
 	function processNew()
 	{
 		if($this->client->addNew())
-		{
 			$this->session->set_flashdata('success', 'Client successfully addded');
-		}
 		else
-		{
 			$this->session->set_flashdata('error', 'Client could not be addded. Try again.');
-		}
 		redirect('clients/add-new');
 	}
 

@@ -20,6 +20,20 @@ class P300_model extends CI_Model {
 		return array('' => 'None') + $returnData;
 	}
 
+
+	/**
+	 * finds data by ID
+	 * @param  int $id 
+	 * @return object
+	 */
+	function findById($id)
+	{
+		return $this->db
+					->where('id', $id)
+					->get($this->table)
+					->row();
+	}
+
 }
 
 /* End of file P300_model.php */
