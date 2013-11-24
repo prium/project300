@@ -47,7 +47,12 @@ class Profile extends Auth {
 
 	function updateAvatar($username = null)
 	{
-		echo $this->input->post('avatar');
+		if($this->user->updateAvatar($username))
+			$this->session->set_flashdata('success', 'Avatar uploaded successfully.');
+		else
+			$this->session->set_flashdata('error', 'Some error occured. Try again.');
+		
+		redirect('profile/'.$username);	
 	}
 }
 

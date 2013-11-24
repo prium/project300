@@ -25,6 +25,7 @@ class Dashboard extends Auth {
 	{
 		$this->session->unset_userdata('id');
 		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('avatar');
 		$this->session->unset_userdata('role');
 
 

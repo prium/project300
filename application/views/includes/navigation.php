@@ -282,7 +282,7 @@
 					<!-- BEGIN USER LOGIN DROPDOWN -->
 					<li class="dropdown user">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-						<img alt="" src="<?php echo site_url(); ?>/assets/img/avatar1_small.jpg" />
+						<img alt="" src="<?php echo site_url('uploads/thumbnails/'.$this->session->userdata('avatar')); ?>" />
 						<span class="username"><?php echo $this->session->userdata('username'); ?></span>
 						<i class="icon-angle-down"></i>
 						</a>

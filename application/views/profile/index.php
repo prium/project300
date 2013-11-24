@@ -21,8 +21,16 @@
 				<?php $this->load->view('includes/notify'); ?>
 				<!--end tab-pane-->
 				<div class="tab-pane profile-classic row-fluid active" id="tab_1_1">
-					<div class="span2"><img src="assets/img/profile/profile-img.png" alt="" /> <a href="#" class="profile-edit">edit</a></div>
-					<ul class="unstyled span10">
+					<ul class="unstyled profile-nav span3">
+						<li style="padding: 0px;">
+							<?php if(!$this->session->userdata('avatar')): ?>
+								<img src="http://www.placehold.it/291x170/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+							<?php else: ?>
+								<img src="<?php echo site_url('uploads/'.$this->session->userdata('avatar')); ?>" alt="" />
+							<?php endif; ?>
+						</li>
+					</ul>
+					<ul class="unstyled span9">
 						<li><span>Full Name:</span> <?php echo $user->fullName; ?></li>
 						<li><span>User Name:</span> <?php echo $user->username; ?></li>
 						<li><span>Email Address:</span> <?php echo $user->email; ?></li>
@@ -80,7 +88,7 @@
 									</div>
 									<div id="tab_2-2" class="tab-pane">
 										<div style="height: auto;" id="accordion2-2" class="accordion collapse">
-											<form action="<?php echo site_url('profile/'.$user->username.'/update-avatar'); ?>" method="post" id="requiredFormEditAvatar" novalidate="novalidate">
+											<form action="<?php echo site_url('profile/'.$user->username.'/update-avatar'); ?>" method="post" id="requiredFormEditAvatar" novalidate="novalidate" enctype="multipart/form-data">
 												<div class="alert alert-error hide">
 													<button class="close" data-dismiss="alert"></button>
 													You have some form errors. Please check below.
@@ -90,8 +98,12 @@
 													Your form validation is successful!
 												</div>
 												<div class="controls">
-													<div class="thumbnail" style="width: 291px; height: 170px;">
-														<img src="http://www.placehold.it/291x170/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+													<div class="thumbnail" style="width: 290px;">
+														<?php if(!$this->session->userdata('avatar')): ?>
+															<img src="http://www.placehold.it/291x170/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+														<?php else: ?>
+															<img src="<?php echo site_url('uploads/'.$this->session->userdata('avatar')); ?>" alt="" />
+														<?php endif; ?>
 													</div>
 												</div>
 												<div class="space10"></div>
@@ -110,10 +122,6 @@
 													</div>
 												</div>
 												<div class="clearfix"></div>
-												<div class="controls">
-													<span class="label label-important">NOTE!</span>
-													<span>You can write some information here..</span>
-												</div>
 												<div class="space10"></div>
 												<div class="submit-btn">
 													<button type="submit" class="btn green">Update Profile</button>
