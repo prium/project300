@@ -11,7 +11,7 @@ class Profile extends Auth {
 	}
 
 	/**
-	 * Loads default dashboard
+	 * Loads default profile
 	 * @return void
 	 */
 	
@@ -20,6 +20,11 @@ class Profile extends Auth {
 		$this->view($username);
 	}
 
+	/**
+	 * loads profile page
+	 * @param  string $username
+	 * @return void
+	 */
 	public function view($username = null)
 	{
 		if(is_null($username)) show_404();
@@ -36,25 +41,48 @@ class Profile extends Auth {
 		$this->load->view($this->layout, $data);
 	}
 
+	/**
+	 * updates personal information
+	 * @param  string $username
+	 * @return void
+	 */
 	function updatePersonal($username = null)
 	{
-		if($this->user->updatePersonal($username))
-			$this->session->set_flashdata('success', 'Profile Information has updated successfully.');
-		else
-			$this->session->set_flashdata('error', 'Profile Information could not be updated. Try again.');
+		if($this->input->server('REQUEST_METHOD') == 'POST')
+		{
+			if($this->user->updatePersonal($username))
+				$this->session->set_flashdata('success', 'Profile Information has updated successfully.');
+			else
+				$this->session->set_flashdata('error', 'Profile Information could not be updated. Try again.');
+			redirect('profile/'.$username);
+		}
 		redirect('profile/'.$username);
 	}
 
+	/**
+	 * updates avatar
+	 * @param  string $username
+	 * @return void
+	 */
 	function updateAvatar($username = null)
 	{
-		if($this->user->updateAvatar($username))
-			$this->session->set_flashdata('success', 'Avatar uploaded successfully.');
-		else
-			$this->session->set_flashdata('error', 'Some error occured. Try again.');
-		
-		redirect('profile/'.$username);	
+		if($this->input->server('REQUEST_METHOD') == 'POST')
+		{
+			if($this->user->updateAvatar($username))
+				$this->session->set_flashdata('success', 'Avatar uploaded successfully.');
+			else
+				$this->session->set_flashdata('error', 'Some error occured. Try again.');
+			
+			redirect('profile/'.$username);	
+		}
+		redirect('profile/'.$username);
 	}
 
+	/**
+	 * updates password
+	 * @param  void $username
+	 * @return void
+	 */
 	public function updatePassword($username = null)
 	{
 		$this->form_validation->set_rules('oldPassword', 'Old Password', 'trim|required|callback__matchPassword['.$username.']');
@@ -78,13 +106,19 @@ class Profile extends Auth {
 		}
 	}
 
+	/**
+	 * callback function to match password
+	 * @param  string $oldPassword
+	 * @param  string $username
+	 * @return boolean
+	 */
 	public function _matchPassword($oldPassword, $username)
 	{
 		$user =	$this->user->findByUsername($username);
 
 		$this->form_validation->set_message('_matchPassword', 'Old Password did not match.');
 
-		if($user->password == do_hash($this->input->post('oldPassword'), 'md5')) return TRUE;
+		if($user->password == do_hash($oldPassword, 'md5')) return TRUE;
 		else return FALSE;
 	}
 }
