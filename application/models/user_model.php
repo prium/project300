@@ -8,7 +8,6 @@ class User_model extends P300_model {
 		$this->table = 'users';
 	}
 
-
 	/**
 	 * Login a user
 	 * @param  string $username
@@ -68,6 +67,11 @@ class User_model extends P300_model {
 		return $this->db->where('username', $username)->update($this->table, $data);
 	}
 
+	/**
+	 * update avatar info by username
+	 * @param  string $username 
+	 * @return boolean
+	 */
 	function updateAvatar($username = null)
 	{
 		$config = array
@@ -122,6 +126,18 @@ class User_model extends P300_model {
 			}
 			
 		}
+	}
+
+	/**
+	 * update password by username
+	 * @param  string $username
+	 * @return boolean
+	 */
+	function updatePassword($username = null)
+	{
+		return $this->db
+				->where('username', $username)
+				->update($this->table, array('password' => do_hash($this->input->post('newPassword'), 'md5')));
 	}
 
 }

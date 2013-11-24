@@ -54,6 +54,39 @@ class Profile extends Auth {
 		
 		redirect('profile/'.$username);	
 	}
+
+	public function updatePassword($username = null)
+	{
+		$this->form_validation->set_rules('oldPassword', 'Old Password', 'trim|required|callback__matchPassword['.$username.']');
+		$this->form_validation->set_rules('newPassword', 'New Password', '
+			trim|required');
+		$this->form_validation->set_rules('conNewPassword', 'Confirm New Password', '
+			trim|required|matches[newPassword]');
+
+		if($this->form_validation->run() == FALSE)
+    	{
+    		$this->index($username);
+    	}
+    	else
+    	{
+			if($this->user->updatePassword($username))
+				$this->session->set_flashdata('success', 'Password has updated! Use the new password to login next time.');
+			else
+				$this->session->set_flashdata('error', 'Password could not be updated. Try again.');
+			
+			redirect('profile/'.$username);
+		}
+	}
+
+	public function _matchPassword($oldPassword, $username)
+	{
+		$user =	$this->user->findByUsername($username);
+
+		$this->form_validation->set_message('_matchPassword', 'Old Password did not match.');
+
+		if($user->password == do_hash($this->input->post('oldPassword'), 'md5')) return TRUE;
+		else return FALSE;
+	}
 }
 
 /* End of file profile.php */

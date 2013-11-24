@@ -53,7 +53,6 @@
 									</li>
 									<li ><a data-toggle="tab" href="#tab_2-2"><i class="icon-picture"></i> Change Avatar</a></li>
 									<li ><a data-toggle="tab" href="#tab_3-3"><i class="icon-lock"></i> Change Password</a></li>
-									<li ><a data-toggle="tab" href="#tab_4-4"><i class="icon-eye-open"></i> Privacity Settings</a></li>
 								</ul>
 							</div>
 							<div class="span9">
@@ -124,7 +123,7 @@
 												<div class="clearfix"></div>
 												<div class="space10"></div>
 												<div class="submit-btn">
-													<button type="submit" class="btn green">Update Profile</button>
+													<button type="submit" class="btn green">Change Avatar</button>
 													<input type="reset" class="btn" value="Cancel">
 												</div>
 											</form>
@@ -132,100 +131,24 @@
 									</div>
 									<div id="tab_3-3" class="tab-pane">
 										<div style="height: auto;" id="accordion3-3" class="accordion collapse">
-											<form action="#">
-												<label class="control-label">Current Password</label>
-												<input type="password" class="m-wrap span8" />
+											<form action="<?php echo site_url('profile/'.$user->username.'/update-password'); ?>" method="post" id="requiredFormEditPassword" novalidate="novalidate">
+												<div class="alert alert-error hide">
+													<button class="close" data-dismiss="alert"></button>
+													You have some form errors. Please check below.
+												</div>
+												<div class="alert alert-success hide">
+													<button class="close" data-dismiss="alert"></button>
+													Your form validation is successful!
+												</div>
+												<label class="control-label">Old Password</label>
+												<input name="oldPassword" type="password" class="m-wrap span8" />
 												<label class="control-label">New Password</label>
-												<input type="password" class="m-wrap span8" />
+												<input name="newPassword" type="password" class="m-wrap span8" />
 												<label class="control-label">Re-type New Password</label>
-												<input type="password" class="m-wrap span8" />
+												<input name="conNewPassword" type="password" class="m-wrap span8" />
 												<div class="submit-btn">
-													<a href="#" class="btn green">Change Password</a>
-													<a href="#" class="btn">Cancel</a>
-												</div>
-											</form>
-										</div>
-									</div>
-									<div id="tab_4-4" class="tab-pane">
-										<div style="height: auto;" id="accordion4-4" class="accordion collapse">
-											<form action="#">
-												<div class="profile-settings row-fluid">
-													<div class="span9">
-														<p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus..</p>
-													</div>
-													<div class="control-group span3">
-														<div class="controls">
-															<label class="radio">
-															<input type="radio" name="optionsRadios1" value="option1" />
-															Yes
-															</label>
-															<label class="radio">
-															<input type="radio" name="optionsRadios1" value="option2" checked />
-															No
-															</label>  
-														</div>
-													</div>
-												</div>
-												<!--end profile-settings-->
-												<div class="profile-settings row-fluid">
-													<div class="span9">
-														<p>Enim eiusmod high life accusamus terry richardson ad squid wolf moon</p>
-													</div>
-													<div class="control-group span3">
-														<div class="controls">
-															<label class="checkbox">
-															<input type="checkbox" value="" /> All
-															</label>
-															<label class="checkbox">
-															<input type="checkbox" value="" /> Friends
-															</label>
-														</div>
-													</div>
-												</div>
-												<!--end profile-settings-->
-												<div class="profile-settings row-fluid">
-													<div class="span9">
-														<p>Pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson</p>
-													</div>
-													<div class="control-group span3">
-														<div class="controls">
-															<label class="checkbox">
-															<input type="checkbox" value="" /> Yes
-															</label>
-														</div>
-													</div>
-												</div>
-												<!--end profile-settings-->
-												<div class="profile-settings row-fluid">
-													<div class="span9">
-														<p>Cliche reprehenderit enim eiusmod high life accusamus terry</p>
-													</div>
-													<div class="control-group span3">
-														<div class="controls">
-															<label class="checkbox">
-															<input type="checkbox" value="" /> Yes
-															</label>
-														</div>
-													</div>
-												</div>
-												<!--end profile-settings-->
-												<div class="profile-settings row-fluid">
-													<div class="span9">
-														<p>Oiusmod high life accusamus terry richardson ad squid wolf fwopo</p>
-													</div>
-													<div class="control-group span3">
-														<div class="controls">
-															<label class="checkbox">
-															<input type="checkbox" value="" /> Yes
-															</label>
-														</div>
-													</div>
-												</div>
-												<!--end profile-settings-->
-												<div class="space5"></div>
-												<div class="submit-btn">
-													<a href="#" class="btn green">Save Changes</a>
-													<a href="#" class="btn">Cancel</a>
+													<button type="submit" class="btn green">Update Password</button>
+													<input type="reset" class="btn" value="Cancel">
 												</div>
 											</form>
 										</div>
