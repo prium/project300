@@ -76,7 +76,7 @@ var TableManaged = function () {
                     }
                 },
                 "aoColumnDefs": [{
-                        'bSortable': false,
+                        //'bSortable': false,
                         'aTargets': [0]
                     }
                 ]

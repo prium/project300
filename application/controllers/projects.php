@@ -19,8 +19,9 @@ class Projects extends Auth {
 	{
 		$data = array
 		(
-			'pageTitle'		=>	'View All Project',
-			'pageLocation'	=>	'projects/viewAll'
+			'pageTitle'		=>	'View All Projects',
+			'pageLocation'	=>	'projects/viewAll',
+			'projects'		=>	$this->project->findAll()
 		);
 
 		$this->load->view($this->layout, $data);

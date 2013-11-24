@@ -72,6 +72,17 @@ class Project_model extends P300_model {
 		else return false;
 	}
 
+	function findAll()
+	{
+		return $this->db
+					->select('P.*, C.name as clientName')
+					->from($this->table.' AS P')
+					->join('projectClients AS PC', 'PC.projectId = P.id')
+					->join('clients AS C', 'C.id = PC.clientId')
+					->get()
+					->result();
+	}
+
 
 }
 
