@@ -65,6 +65,28 @@ class Projects extends Auth {
 		redirect('projects/add-new');
 	}
 
+	/**
+	 * view a project
+	 * @param  string $slug
+	 * @return void
+	 */
+	function view($slug)
+	{
+		$project = $this->project->findBySlug($slug);
+		print_r($project);
+
+		$this->breadcrumbs->push($project->name, site_url('projects/'.$slug));
+		
+		$data = array
+		(
+			'pageTitle'		=>	'View Project',
+			'pageLocation'	=>	'projects/viewOne',
+			'project'		=>	$project
+		);
+
+		$this->load->view($this->layout, $data);
+	}
+
 }
 
 /* End of file projects.php */

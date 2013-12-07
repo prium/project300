@@ -72,15 +72,61 @@ class Project_model extends P300_model {
 		else return false;
 	}
 
+	/**
+	 * find all projects
+	 * @return array of objects
+	 */
 	function findAll()
 	{
-		return $this->db
-					->select('P.*, C.name as clientName')
-					->from($this->table.' AS P')
-					->join('projectClients AS PC', 'PC.projectId = P.id')
-					->join('clients AS C', 'C.id = PC.clientId')
-					->get()
-					->result();
+		$projects = $this->db
+						->select('*')
+						->from($this->table)
+						->get()
+						->result();
+		foreach ($projects as $project)
+		{
+			$project->clients = $this->db
+								->select('C.name')
+								->where('PC.projectId', $project->id)
+								->from('projectClients as PC')
+								->join('clients as C', 'C.id = PC.clientId')
+								->get()
+								->result();
+		}
+
+		return $projects;
+	}
+
+	function findBySlug($slug)
+	{
+		$project =  $this->db
+						->select('*')
+						->where('slug', $slug)
+						->get($this->table)
+						->row();
+
+		$project->clients = $this->db
+								->select('C.name, C.gender, C.email, C.avatar, C.details, C.organization, C.address, C.startDate, C.endDate, C.comment, C.createdOn')
+								->where('PC.projectId', $project->id)
+								->from('projectClients as PC')
+								->join('clients as C', 'C.id = PC.clientId')
+								->get()
+								->result();
+		$project->categories = $this->db
+								->select('Cat.name, ParCat.name as parentName')
+								->where('PCat.projectId', $project->id)
+								->from('projectCategories as PCat')
+								->join('categories as Cat', 'Cat.id = PCat.categoryId')
+								->join('categories as ParCat', 'ParCat.id = Cat.parent', 'left')
+								->get()
+								->result();
+		$project->amounts = $this->db
+								->select('amount, date, comment')
+								->where('projectId', $project->id)
+								->get('projectAmounts')
+								->result();
+
+		return $project;
 	}
 
 

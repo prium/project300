@@ -18,7 +18,8 @@
 			<th>Name</th>
 			<th>Status</th>
 			<th>Starting Date</th>
-			<th>Client</th>
+			<th>Clients</th>
+			<th>More</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -28,7 +29,15 @@
 				<td><?php echo $project->name; ?></td>
 				<td><?php echo ucfirst($project->status); ?></td>
 				<td><?php echo date("h:m A, F jS, Y", strtotime($project->startDate)); ?></td>
-				<td><?php echo $project->clientName; ?></td>
+				<td>
+					<?php 
+						foreach ($project->clients as $client) {
+							echo $client->name;
+							echo "<br/>";
+						}
+					?>
+				</td>
+				<td><a class="btn green" href="<?php echo site_url("projects/".$project->slug); ?>">View more <i class="m-icon-swapright m-icon-white"></i></a></td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
