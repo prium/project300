@@ -106,7 +106,7 @@ class Project_model extends P300_model {
 						->row();
 
 		$project->clients = $this->db
-								->select('C.name, C.gender, C.email, C.avatar, C.details, C.organization, C.address, C.startDate, C.endDate, C.comment, C.createdOn')
+								->select('C.id, C.name, C.gender, C.email, C.avatar, C.details, C.organization, C.address, C.startDate, C.endDate, C.comment, C.createdOn')
 								->where('PC.projectId', $project->id)
 								->from('projectClients as PC')
 								->join('clients as C', 'C.id = PC.clientId')
@@ -127,6 +127,64 @@ class Project_model extends P300_model {
 								->result();
 
 		return $project;
+	}
+
+	/**
+	 * updates a project
+	 * @return false/project last insert id
+	 */
+	function update($slug)
+	{
+		$project = $this->findBySlug($slug);
+		$data = array(
+			'name'			=>	$this->input->post('projectName'),
+			'slug'			=>	$this->input->post('projectSlug'),
+			'status'		=>	$this->input->post('projectStatus'),
+			'startDate'		=>	$this->input->post('startDate'),
+			'endDate'		=>	$this->input->post('endDate'),
+			'description'	=>	($this->input->post('projectDescription') == '') ? NULL:$this->input->post('projectDescription'),
+			'comment'		=>	($this->input->post('projectComment') == '') ? NULL:$this->input->post('projectComment')
+		);
+		$this->db->where('slug', $slug);
+
+		if($this->db->update($this->table, $data))
+		{
+			// clear old categories
+			$this->db
+				->where('projectId', $project->id)
+				->delete('projectCategories');
+
+			$categoryIds = $this->input->post('categories');
+
+			foreach($categoryIds as $categoryId)
+			{
+				$data1 = array (
+					'projectId'		=>	$project->id,
+					'categoryId'	=>	$categoryId
+				);
+
+				if(!$this->db->insert('projectCategories', $data1)) return false;
+			}
+
+			// clear old clients
+			$this->db
+				->where('projectId', $project->id)
+				->delete('projectClients');
+
+			$clientIds = $this->input->post('clients');
+
+			foreach($clientIds as $client)
+			{
+				$data2 = array (
+					'projectId'		=>	$project->id,
+					'clientId'		=>	$client
+				);
+
+				if(!$this->db->insert('projectClients', $data2)) return false;
+			}
+			return $this->findBySlug($this->input->post('projectSlug'));
+		}
+		else return false;
 	}
 
 

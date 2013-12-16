@@ -45,6 +45,32 @@ class Client_model extends P300_model {
 			return $this->db->insert_id();
 		else return false;
 	}
+
+	/**
+	 * client ids by a project
+	 * @param  int  $projectId
+	 * @param  boolean $asArray
+	 * @return array/object
+	 */
+	function clientIDs($projectId, $asArray = true)
+	{
+		$clientIds = $this->db
+						->select('clientId')
+						->where('projectId', $projectId)
+						->get('projectClients')
+						->result();
+
+		if($asArray)
+		{
+			$clientIdsArray = array();
+			foreach ($clientIds as $clientIdObj)
+			{
+				$clientIdsArray[] = $clientIdObj->clientId;
+			}
+			return $clientIdsArray;
+		}
+		else return $clientIds;
+	}
 }
 
 /* End of file client_model.php */

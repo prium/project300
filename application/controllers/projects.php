@@ -73,7 +73,6 @@ class Projects extends Auth {
 	function view($slug)
 	{
 		$project = $this->project->findBySlug($slug);
-		print_r($project);
 
 		$this->breadcrumbs->push($project->name, site_url('projects/'.$slug));
 		
@@ -85,6 +84,55 @@ class Projects extends Auth {
 		);
 
 		$this->load->view($this->layout, $data);
+	}
+
+	/**
+	 * Edit a project
+	 * @param  string $slug
+	 * @return void
+	 */
+	function edit($slug)
+	{
+		$project = $this->project->findBySlug($slug);
+		// printDie($project);
+
+		$this->load->model('category_model', 'category');
+		$this->load->model('client_model', 'client');
+
+		$this->breadcrumbs->push($project->name, site_url('projects/'.$slug));
+		$this->breadcrumbs->push('Edit', site_url('projects/'.$slug.'/edit'));
+		
+		$data = array
+		(
+			'pageTitle'			=>	'Edit Project',
+			'pageLocation'		=>	'projects/edit',
+			'project'			=>	$project,
+			'statusList'		=>	array('' => '-- select --') + $this->project->getStatusList(),
+			'allCategoryList'	=>	$this->category->fullList('income'),
+			'categoryIds'		=>	$this->category->categoryIds($project->id),
+			'allClientList'		=>	$this->client->allList(false),
+			'clientIds'			=>	$this->client->clientIds($project->id),
+		);
+
+		$this->load->view($this->layout, $data);
+	}
+
+
+	/**
+	 * process a update project request
+	 * @return
+	 */
+	function processUpdate($slug)
+	{
+		if($project = $this->project->update($slug))
+		{
+			$this->session->set_flashdata('success', 'Project successfully updated');
+		}
+		else
+		{
+			$this->session->set_flashdata('error', 'Project could not be updated. Try again.');
+		}
+		redirect('projects/'.$project->slug);
 	}
 
 }

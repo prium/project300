@@ -43,6 +43,8 @@ $route['404_override'] = '';
 
 $route['projects/add-new'] = "projects/addNew";
 $route['projects/process-new'] = "projects/processNew";
+$route['projects/(:any)/edit'] = "projects/edit/$1";
+$route['projects/(:any)/update'] = "projects/processUpdate/$1";
 $route['projects/(:any)'] = "projects/view/$1";
 
 $route['categories/process-new'] = "categories/processNew";

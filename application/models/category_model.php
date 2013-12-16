@@ -66,6 +66,32 @@ class Category_model extends P300_model {
 		return $this->db->insert($this->table, $data);
 	}
 
+	/**
+	 * category ids by a project
+	 * @param  int  $projectId
+	 * @param  boolean $asArray
+	 * @return array/object
+	 */
+	function categoryIDs($projectId, $asArray = true)
+	{
+		$categoryIds = $this->db
+						->select('categoryId')
+						->where('projectId', $projectId)
+						->get('projectCategories')
+						->result();
+
+		if($asArray)
+		{
+			$categoryIdsArray = array();
+			foreach ($categoryIds as $categiryIdObj)
+			{
+				$categoryIdsArray[] = $categiryIdObj->categoryId;
+			}
+			return $categoryIdsArray;
+		}
+		else return $categoryIds;
+	}
+
 }
 
 /* End of file categories_model.php */
