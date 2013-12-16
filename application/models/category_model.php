@@ -33,7 +33,7 @@ class Category_model extends P300_model {
 	function fullList($type = null)
 	{
 		$categoryList = $this->db
-							->select('id, name')
+							->select('id, name, slug')
 							->where('type', $type)
 							->where('parent', null)
 							->get('categories')
@@ -41,7 +41,7 @@ class Category_model extends P300_model {
 		foreach ($categoryList as $key => $category)
 		{
 			$category->subCategory = $this->db
-										->select('id, name')
+										->select('id, name, slug')
 										->where('parent', $category->id)
 										->get('categories')
 										->result();

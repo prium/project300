@@ -11,7 +11,7 @@
 					<?php $this->load->view('includes/notify'); ?>
 					<div class="portlet box blue">
 						<div class="portlet-title">
-							<div class="caption"><i class="icon-reorder"></i>Basic Information</div>
+							<div class="caption"><i class="icon-plus"></i>Add New Category</div>
 							<div class="tools">
 								<a href="javascript:;" class="collapse"></a>
 							</div>
@@ -50,7 +50,7 @@
 					</div><!--/portlet box grey-->
 					
 					<div class="form-actions">
-						<button type="submit" class="btn green">Submit</button>
+						<button type="submit" class="btn green">Add Category</button>
 						<input type="reset" class="btn" value="Cancel">
 					</div>
 				</form>
@@ -64,7 +64,51 @@
 	</div><!--/span6-->
 
 	<div class="span6">
-		Place for viewing all categories
+		<div class="portlet box green">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i>All Categories</div>
+				<div class="tools">
+					<a href="javascript:;" class="collapse"></a>
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<table class="table table-striped table-bordered table-hover" id="sample_2">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Slug</th>
+							<th>Parent</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($allCategories as $category): ?>
+								<?php if(count($category->subCategory)): ?>
+									<?php foreach ($category->subCategory as $subCategory): ?>
+									<tr class="odd gradeX">
+										<td><?php echo $subCategory->name; ?></td>
+										<td><?php echo $subCategory->slug; ?></td>
+										<td><?php echo $category->name; ?></td>
+										<td><a class="btn mini green" href="#">Edit</a></td>
+										<td><a class="btn mini red" href="#">Delete</a></td>
+									</tr>
+									<?php endforeach; ?>
+							  	
+							  	<?php else: ?>
+							  	<tr class="odd gradeX">
+						  			<td><?php echo $category->name; ?></td>
+									<td><?php echo $category->slug; ?></td>
+									<td>none</td>
+									<td><a class="btn mini green" href="#">Edit</a></td>
+									<td><a class="btn mini red" href="#">Delete</a></td>
+								</tr>
+								<?php endif; ?>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div><!--/span6-->
 
 </div><!--/row-fluid-->

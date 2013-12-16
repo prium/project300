@@ -42,7 +42,8 @@ class Categories extends Stuff {
 			'pageTitle'		=>	'Project Categories',
 			'pageLocation'	=>	'categories/categories',
 			'categoryType'	=>	'income',
-			'categories'	=>	$this->category->parentList('income')
+			'categories'	=>	$this->category->parentList('income'),
+			'allCategories'	=>	$this->category->fullList('income')
 		);
 
 		$this->load->view($this->layout, $data);	
